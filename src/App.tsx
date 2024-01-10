@@ -9,6 +9,8 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { HomePage } from './pages/HomePage/index.page';
+import { AppDataProvider } from './providers/AppDataProvider';
 
 function App() {
   const { currentTheme } = useAppTheme();
@@ -20,9 +22,12 @@ function App() {
       bgcolor={currentTheme.palette.background.default}
     >
       <ThemeProvider theme={responsiveFontSizes(currentTheme)}>
-        <CustomSnackbarProvider>
-          <AppBar />
-        </CustomSnackbarProvider>
+        <AppDataProvider>
+          <CustomSnackbarProvider>
+            <AppBar />
+            <HomePage />
+          </CustomSnackbarProvider>
+        </AppDataProvider>
       </ThemeProvider>
     </Stack>
   );

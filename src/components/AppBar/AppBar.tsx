@@ -6,20 +6,31 @@ import ReactCountryFlag from 'react-country-flag';
 import { FunctionComponent } from 'react';
 import { Title, TitleWrapper } from './styles';
 import ThemeSelector from '../ThemeSelector/ThemeSelector';
+import { useAppData } from '../../providers/AppDataProvider';
 
 const AppBar: FunctionComponent = () => {
+  const { setLanguage } = useAppData();
+
   return (
     <MuiAppBar position="sticky">
       <Toolbar>
         <TitleWrapper>
-          <Title variant="h6">App Name Here</Title>
+          <Title variant="h6">JW Insights</Title>
         </TitleWrapper>
         <Box display="flex" alignItems="center">
           <Box display="flex" alignItems="center" mr={1}>
-            <IconButton onClick={() => {}}>
+            <IconButton
+              onClick={() => {
+                setLanguage('en');
+              }}
+            >
               <ReactCountryFlag countryCode="US" svg />
             </IconButton>
-            <IconButton onClick={() => {}}>
+            <IconButton
+              onClick={() => {
+                setLanguage('pt');
+              }}
+            >
               <ReactCountryFlag countryCode="BR" svg />
             </IconButton>
           </Box>
